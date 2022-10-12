@@ -1,0 +1,48 @@
+
+.shop__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.shop__card {
+    width: 20%;
+    margin: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 1px 2px 10px 0px rgba(145, 145, 145, 0.6);
+}
+
+.shop__card img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+}
+
+.card__inner {
+    margin-left: 10;
+}
+
+.card__ttl {
+    font-size: 30px;
+    margin: 20 0;
+}
+
+.shop__info {
+    display: flex;
+    font-size: 15px;
+}
+
+.shop__area {
+    margin-right: 10px;
+}
+
+.shop__detail {
+    width: 40%;
+    padding: 10;
+    margin-top: 20;
+    margin-bottom: 30;
+    background-color: #0d33ff;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+}
