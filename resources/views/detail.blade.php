@@ -3,45 +3,55 @@
 @section('pageCss')
 <link rel="stylesheet" href="/css/detail.css" />
 @endsection
-
-@include('layouts.header')
-
-@section('contents')
-<div class="detail__ttl">
+<div class="wrap">
   <div>
-    <button onclick="location.href=' /'">＜</button>
-    <p>{{$shopFind->name}}</p>
-  </div>
-</div>
-<div>
-  <div>
-    <img src="{{$shopFind->img_url}}">
-    <div>
-      <p class="shop__area">#{{$shopFind->area->name}}</p>
-      <p class="shop__category">#{{$shopFind->category->name}}</p>
+    @include('layouts.header')
+    @section('contents')
+    <div class="detail__ttl">
+      <div class="detail__ttl-inner">
+        <button onclick="location.href=' /'" class="back__btn">＜</button>
+        <p class="shop__name">{{$shopFind->name}}</p>
+      </div>
     </div>
-    <div>
-      <p>{{$shopFind->description}}</p>
+    <div class="detail__all">
+      <div class="shop__detail">
+        <img src="{{$shopFind->img_url}}">
+        <div class="shop__info">
+          <p class="shop__area">#{{$shopFind->area->name}}</p>
+          <p class="shop__category">#{{$shopFind->category->name}}</p>
+        </div>
+        <div class="shop__description">
+          <p>{{$shopFind->description}}</p>
+        </div>
+      </div>
     </div>
   </div>
-  <div>
-    <div>
-      <div>
+  <div class="shop__reserve">
+    <div class="shop__reserve-inner">
+      <div class="reserve__ttl">
         <p>予約</p>
       </div>
       <div>
         <form>
           @csrf
-          <input type="date">
-          <input type="time">
-          <select>
+          <div class="shop__reserve-date">
+            <input type="date" id="input-date">
+          </div>
+          <div class="shop__reserve-time">
+            <select class="shop__reserve-select" id="input-time">
+              @foreach(config('time') as $time_id => $time)
+              <option value="{{$time_id}}">{{$time}}</option>
+              @endforeach
+            </select>
+          </div>
+          <select class="shop__reserve-select" id="input-num">
             @foreach(config('number') as $number_id => $number)
             <option value="{{$number_id}}">{{$number}}</option>
             @endforeach
           </select>
         </form>
       </div>
-      <div>
+      <div class="reserve__table">
         <table>
           <tr>
             <th>Shop</th>
@@ -49,24 +59,27 @@
           </tr>
           <tr>
             <th>Date</th>
-            <td></td>
+            <td><span id="output-date"></span></td>
           </tr>
           <tr>
             <th>Time</th>
-            <td></td>
+            <td><span id="output-time"></span></td>
           </tr>
           <tr>
             <th>Number</th>
-            <td></td>
+            <td><span id="output-num"></span></td>
           </tr>
         </table>
       </div>
     </div>
-    <a href="" class="">
-      <div class="">
+    <a href="" class="reserve__btn">
+      <div class="reserve__btn-block">
         <p>予約する</p>
       </div>
     </a>
   </div>
 </div>
+@section('pageJs')
+<script src="{{ mix('js/detail.js') }}"></script>
+@endsection
 @endsection

@@ -1,3 +1,8 @@
+.wrap {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 5% 0;
+}
 
 .shop__content {
     display: flex;
@@ -6,11 +11,31 @@
     margin-top: 50px;
 }
 
+.shop__content::before{
+    content:"";
+    display: block;
+    width:20%;
+    order:1;
+    margin: 10px 15px;
+}
+
+.shop__content::after{
+    content:"";
+    display: block;
+    width:20%;
+    order:1;
+    margin: 10px 15px;
+}
+
 .shop__card {
     width: 20%;
     margin: 10px 15px;
     border-radius: 5px;
     box-shadow: 1px 2px 10px 0px rgba(145, 145, 145, 0.6);
+}
+
+.hidden{
+    display: none;
 }
 
 .shop__card img {

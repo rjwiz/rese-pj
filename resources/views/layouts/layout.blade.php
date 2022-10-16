@@ -18,6 +18,7 @@
       @yield('contents')
     </main>
     <script src="{{ mix('js/menu.js') }}"></script>
+    @yield('pageJs')
   </body>
 
   </html>
