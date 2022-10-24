@@ -16,3 +16,22 @@ $(function () {
 
     $("#search-text").on("input", searchWord);
 });
+
+$(function () {
+    searchCategories = function () {
+        var searchCategory = $(this).val(),
+            targetCategory;
+
+        $(".shop__card").each(function () {
+            targetCategory = $(this).text();
+
+            if (targetCategory.indexOf(searchCategory) != -1) {
+                $(this).removeClass("hidden");
+            } else {
+                $(this).addClass("hidden");
+            }
+        });
+    };
+
+    $("#search-category").on("change", searchCategories);
+});

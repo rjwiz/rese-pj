@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ShopController::class, 'index']);
+Route::POST('/', [ShopController::class, 'search']);
 Route::get('/detail/{id}', [ShopController::class, 'detail'])->name('detail');
 
 Route::get('/thanks', function () {
