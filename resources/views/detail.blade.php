@@ -79,6 +79,8 @@
     </a>
   </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 @section('pageJs')
 <script src="{{ mix('js/detail.js') }}"></script>
 @endsection

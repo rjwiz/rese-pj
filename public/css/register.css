@@ -1,0 +1,58 @@
+.wrap {
+    margin: 20px 5% 0;
+}
+
+.contents {
+    width: 1000px;
+    width: 100%;
+}
+
+.card {
+    margin: 100px auto;
+    width: 25%;
+    border-radius: 5px;
+    box-shadow: 1px 2px 10px 0px rgba(145, 145, 145, 0.6);
+}
+
+.card__inner {
+    margin: 0 20px;
+}
+
+.card__ttl {
+    width: 100%;
+    height: 5%;
+    background-color: #0d33ff;
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+
+.card__ttl p {
+    line-height: 45px;
+    margin-left: 20px;
+}
+
+input {
+    width: 100%;
+    margin-top: 20px;
+    border-bottom: 1px solid #cccccc;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    border-radius: 0px;
+}
+
+.btn {
+    margin-top: 20px;
+    padding-bottom: 15px;
+    text-align: right;
+}
+
+button {
+    padding: 5 30;
+    background-color: #0d33ff;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+}

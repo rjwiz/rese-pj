@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Category;
@@ -10,25 +11,20 @@ use App\Models\Category;
 
 class ShopController extends Controller
 {
-  public function index(Request $request)
+  public function index()
   {
     $shops = Shop::with('area', 'category')->get();
     $categories = Category::get();
     $area = Area::get();
-    $searchWord = $request->input('searchWord');
-    $categoryId = $request->input('categoryId');
-    $areaId = $request->input('areaId');
+    $user = Auth::user();
 
     return view('index', [
+      'user' => $user,
       'shops' => $shops,
       'categories' => $categories,
       'area' => $area,
-      'searchWord' => $searchWord,
-      'categoryId' => $categoryId,
-      'areaId' => $areaId,
     ]);
   }
-
 
   public function detail($id)
   {
@@ -40,4 +36,28 @@ class ShopController extends Controller
       'shopFind' => $shopFind
     ]);
   }
+
+  public function mypage()
+  {
+    $shops = Shop::with('area', 'category')->get();
+    $categories = Category::get();
+    $area = Area::get();
+    $user = Auth::user();
+
+    return view('mypage', [
+      'user' => $user,
+      'shops' => $shops,
+      'categories' => $categories,
+      'area' => $area,
+    ]);
+  }
+
+  /** 
+  public function check()
+  {
+    $user = Auth::user();
+    $param = ['user' => $user];
+    return view('check', $param,);
+  }
+   */
 }

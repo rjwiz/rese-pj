@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [ShopController::class, 'index']);
+Route::get('/detail/{id}', [ShopController::class, 'detail'])->name('detail');
+
+Route::get('/thanks', function () {
+    return view('thanks');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/mypage', [ShopController::class, 'mypage'])->name('mypage');
+
+/**
+Route::get('/check', [ShopController::class, 'check']);
+*/
 
 require __DIR__.'/auth.php';

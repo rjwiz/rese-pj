@@ -35,16 +35,18 @@
         <p class="shop__area">#{{$shop->area->name}}</p>
         <p class="shop__category">#{{$shop->category->name}}</p>
       </div>
-      <div class="shop__detail">
-        <a href="{{ route('detail', ['id' => $shop->id]) }}">詳しくみる</a>
-      </div>
+      <a href="{{ route('detail', ['id' => $shop->id]) }}">
+        <div class="shop__detail">
+          <p>詳しくこちら</p>
+        </div>
+      </a>
     </div>
   </div>
   @endforeach
 </div>
-@section('pageJs')
-<script src="{{ mix('js/search.js') }}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+@section('pageJs')
+<script src="{{ mix('js/search.js') }}"></script>
 @endsection
 @endsection

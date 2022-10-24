@@ -1,6 +1,6 @@
 $(function () {
     searchWord = function () {
-        var searchText = $(this).val(), // 検索ボックスに入力された値
+        var searchText = $(this).val(),
             targetText;
 
         $(".shop__card").each(function () {
@@ -15,14 +15,4 @@ $(function () {
     };
 
     $("#search-text").on("input", searchWord);
-});
-
-$(function () {
-  searchCategory = function () {
-    var searchCategory = $('#search-category option:selected')
-    
-    $(".shop__card").each(function () {
-
-    });
-  };
 });
