@@ -25,9 +25,13 @@ class Shop extends Model
     return $this->belongsTo('App\Models\Category');
   }
 
-  public function getShop()
+  public function reservations()
   {
-    $shops = Shop::get();
-    return $shops;
+    return $this->hasMany('App\Models\Reservation');
+  }
+
+  public function likes()
+  {
+    return $this->hasMany('App\Models\Like');
   }
 }

@@ -23,7 +23,7 @@ $(function () {
             targetCategory;
 
         $(".shop__card").each(function () {
-            targetCategory = $(this).text();
+            targetCategory = $(this).val();
 
             if (targetCategory.indexOf(searchCategory) != -1) {
                 $(this).removeClass("hidden");

@@ -39,48 +39,36 @@
       <div class="like">
         <p class="ttl">お気に入り店舗</p>
         <div class="like__inner">
+          @foreach($shops as $shop)
+          @if($likes->like_exist(Auth::user()->id,$shop->id))
           <div class="shop__card">
-            <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg">
+            <img src="{{$shop->img_url}}">
             <div class="card__inner">
               <div class="card__ttl">
-                <h3>テスト</h3>
+                <h2>{{$shop->name}}</h2>
               </div>
               <div class="shop__info">
-                <p class="shop__area">#テスト</p>
-                <p class="shop__category">#テスト</p>
+                <p class="shop__area">#{{$shop->area->name}}</p>
+                <p class="shop__category">#{{$shop->category->name}}</p>
               </div>
-              <a href="">
-                <div class="shop__detail">
-                  <p>詳しくこちら</p>
-                </div>
-              </a>
+              <div class="shop__btn">
+                <a href="{{ route('detail', ['shop_id' => $shop->id]) }}">
+                  <div class="shop__detail">
+                    <p>詳しくみる</p>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
-          <div class="shop__card">
-            <img src="https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg">
-            <div class="card__inner">
-              <div class="card__ttl">
-                <h2>テスト</h2>
-              </div>
-              <div class="shop__info">
-                <p class="shop__area">#テスト</p>
-                <p class="shop__category">#テスト</p>
-              </div>
-              <a href="">
-                <div class="shop__detail">
-                  <p>詳しくこちら</p>
-                </div>
-              </a>
-            </div>
-          </div>
+          @endif
+          @endforeach
         </div>
       </div>
     </div>
   </div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-@section('pageJs')
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+  @section('pageJs')
 
-@endsection
-@endsection
+  @endsection
+  @endsection

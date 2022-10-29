@@ -124,4 +124,6 @@ td:nth-child(3) {
     padding: 20px 0;
     text-align: center;
     color: #fff;
+    border: none;
+    cursor: pointer;
 }

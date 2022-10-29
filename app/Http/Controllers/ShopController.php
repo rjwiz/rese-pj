@@ -7,25 +7,27 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Category;
-
+use App\Models\Like;
 
 class ShopController extends Controller
 {
   public function index()
   {
     $shops = Shop::with('area', 'category')->get();
+    $user = Auth::user();
     $categories = Category::get();
     $area = Area::get();
-    $user = Auth::user();
+    $likes = Like::all()->first();
 
     return view('index', [
       'user' => $user,
       'shops' => $shops,
       'categories' => $categories,
       'area' => $area,
+      'likes' => $likes,
     ]);
   }
-
+  /** 
   public function search(Request $request)
   {
     $user = Auth::user();
@@ -71,6 +73,7 @@ class ShopController extends Controller
       'shops' => $shops,
     ]);
   }
+   */
 
   public function detail($id)
   {
@@ -80,21 +83,6 @@ class ShopController extends Controller
     return view('detail', [
       'shops' => $shops,
       'shopFind' => $shopFind
-    ]);
-  }
-
-  public function mypage()
-  {
-    $shops = Shop::with('area', 'category')->get();
-    $categories = Category::get();
-    $area = Area::get();
-    $user = Auth::user();
-
-    return view('mypage', [
-      'user' => $user,
-      'shops' => $shops,
-      'categories' => $categories,
-      'area' => $area,
     ]);
   }
 

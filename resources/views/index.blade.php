@@ -48,11 +48,22 @@
         <p class="shop__area">#{{$shop->area->name}}</p>
         <p class="shop__category">#{{$shop->category->name}}</p>
       </div>
-      <a href="{{ route('detail', ['id' => $shop->id]) }}">
-        <div class="shop__detail">
-          <p>詳しくこちら</p>
+      <div class="shop__btn">
+        <a href="{{ route('detail', ['shop_id' => $shop->id]) }}">
+          <div class="shop__detail">
+            <p>詳しくみる</p>
+          </div>
+        </a>
+        @if($likes->like_exist(Auth::user()->id,$shop->id))
+        <div class="like__icon">
+          <a href="{{ route('like/delete', ['shop_id' => $shop->id]) }}"><img src="/images/like.png"></a>
         </div>
-      </a>
+        @else
+        <div class="like__icon">
+          <a href="{{ route('like', ['shop_id' => $shop->id]) }}"><img src="/images/unlike.png"></a>
+        </div>
+        @endif
+      </div>
     </div>
   </div>
   @endforeach

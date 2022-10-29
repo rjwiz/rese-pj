@@ -72,7 +72,7 @@ select {
 }
 
 .card__inner {
-    margin-left: 10;
+    margin: 0 15px;
 }
 
 .card__ttl {
@@ -89,8 +89,14 @@ select {
     margin-right: 10px;
 }
 
+.shop__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .shop__detail {
-    width: 40%;
+    width: 100%;
     padding: 10;
     margin-top: 20;
     margin-bottom: 30;
@@ -98,4 +104,8 @@ select {
     color: #fff;
     border-radius: 5px;
     text-align: center;
+}
+
+.like__icon {
+    width: 10%;
 }

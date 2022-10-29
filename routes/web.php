@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,13 +19,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ShopController::class, 'index']);
 Route::POST('/', [ShopController::class, 'search']);
-Route::get('/detail/{id}', [ShopController::class, 'detail'])->name('detail');
+Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
+
+Route::POST('/reservation', [ReservationController::class, 'store']) -> middleware(['auth'])->name('reservation');
+
+Route::get('/like/{shop_id}', [LikeController::class, 'create'])->middleware(['auth'])->name('like');
+Route::get('/like/delete/{shop_id}', [LikeController::class, 'delete'])->middleware(['auth'])->name('like/delete');
+
+
+Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
 Route::get('/thanks', function () {
     return view('thanks');
 });
-
-Route::get('/mypage', [ShopController::class, 'mypage'])->name('mypage');
 
 /**
 Route::get('/check', [ShopController::class, 'check']);

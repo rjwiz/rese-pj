@@ -32,24 +32,23 @@
         <p>予約</p>
       </div>
       <div>
-        <form>
+        <form method="post" action="{{ route('reservation') }}">
           @csrf
           <div class="shop__reserve-date">
-            <input type="date" id="input-date">
+            <input type="date" id="input-date" name="date">
           </div>
           <div class="shop__reserve-time">
-            <select class="shop__reserve-select" id="input-time">
+            <select class="shop__reserve-select" id="input-time" name="time">
               @foreach(config('time') as $time_id => $time)
               <option value="{{$time_id}}">{{$time}}</option>
               @endforeach
             </select>
           </div>
-          <select class="shop__reserve-select" id="input-num">
+          <select class="shop__reserve-select" id="input-num" name="num_of_users">
             @foreach(config('number') as $number_id => $number)
             <option value="{{$number_id}}">{{$number}}</option>
             @endforeach
           </select>
-        </form>
       </div>
       <div class="reserve__table">
         <table>
@@ -72,11 +71,10 @@
         </table>
       </div>
     </div>
-    <a href="" class="reserve__btn">
-      <div class="reserve__btn-block">
-        <p>予約する</p>
-      </div>
-    </a>
+    <div>
+      <input type="submit" value="予約" class="reserve__btn-block">
+    </div>
+    </form>
   </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
