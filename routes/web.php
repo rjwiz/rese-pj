@@ -22,7 +22,7 @@ Route::POST('/', [ShopController::class, 'search']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
 
-Route::POST('/reservation', [ReservationController::class, 'store']) -> middleware(['auth'])->name('reservation');
+Route::POST('/reservation', [ReservationController::class, 'create']) -> middleware(['auth'])->name('reservation');
 
 Route::get('/like/{shop_id}', [LikeController::class, 'create'])->middleware(['auth'])->name('like');
 Route::get('/like/delete/{shop_id}', [LikeController::class, 'delete'])->middleware(['auth'])->name('like/delete');

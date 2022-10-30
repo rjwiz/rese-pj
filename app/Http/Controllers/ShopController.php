@@ -14,17 +14,16 @@ class ShopController extends Controller
   public function index()
   {
     $shops = Shop::with('area', 'category')->get();
-    $user = Auth::user();
+
     $categories = Category::get();
     $area = Area::get();
-    $likes = Like::all()->first();
+    $like = Like::all()->first();
 
     return view('index', [
-      'user' => $user,
       'shops' => $shops,
       'categories' => $categories,
       'area' => $area,
-      'likes' => $likes,
+      'like' => $like,
     ]);
   }
   /** 
@@ -77,10 +76,12 @@ class ShopController extends Controller
 
   public function detail($id)
   {
+    $user = Auth::user();
     $shops = Shop::with('area', 'category')->get();
     $shopFind = Shop::find($id);
 
     return view('detail', [
+      'user' => $user,
       'shops' => $shops,
       'shopFind' => $shopFind
     ]);

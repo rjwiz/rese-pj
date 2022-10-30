@@ -54,7 +54,8 @@
             <p>詳しくみる</p>
           </div>
         </a>
-        @if($likes->like_exist(Auth::user()->id,$shop->id))
+        @auth
+        @if($like->like_exist(Auth::user()->id,$shop->id))
         <div class="like__icon">
           <a href="{{ route('like/delete', ['shop_id' => $shop->id]) }}"><img src="/images/like.png"></a>
         </div>
@@ -63,6 +64,12 @@
           <a href="{{ route('like', ['shop_id' => $shop->id]) }}"><img src="/images/unlike.png"></a>
         </div>
         @endif
+        @endauth
+        @guest
+        <div class="like__icon">
+          <a href="{{ route('like', ['shop_id' => $shop->id]) }}"><img src="/images/unlike.png"></a>
+        </div>
+        @endguest
       </div>
     </div>
   </div>
