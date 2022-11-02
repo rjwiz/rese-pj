@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\CategorySeeder;
+use Database\Seeders\AreaSeeder;
+use Database\Seeders\ShopSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this
+        ->call(ShopSeeder::class);
     }
 }

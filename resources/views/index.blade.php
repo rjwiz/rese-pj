@@ -10,7 +10,7 @@
     <form action="/" method="POST">
       @csrf
       <div class="search__area">
-        <select id="area_id" name="area_id" class="area_name" value="area_id" SIZE=5>
+        <select id="area_id" name="area_id" class="area_name" value="area_id">
           <option>All area</option>
           @foreach($area as $area)
           <option class="name-item" value="{{$area->id}}">
@@ -18,7 +18,7 @@
           </option>
           @endforeach
         </select>
-        <select id="category_id" name="category_id" class="category_name" value="category_id" SIZE=5>
+        <select id="category_id" name="category_id" class="category_name" value="category_id">
           <option>All genre</option>
           @foreach($categories as $category)
           <option class="name-item" value="{{$category->id}}">
