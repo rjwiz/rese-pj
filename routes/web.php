@@ -24,6 +24,15 @@ Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail
 
 Route::POST('/reservation', [ReservationController::class, 'create']) -> middleware(['auth'])->name('reservation');
 
+/*
+Route::get('/testdetail/{shop_id}', [ShopController::class, 'testdetail'])->name('testdetail');
+Route::POST('/testreservation', [ReservationController::class, 'show'])->middleware(['auth'])->name('testreservation');
+*/
+
+Route::get('/done', function () {
+    return view('done');
+});
+
 Route::get('/like/{shop_id}', [LikeController::class, 'create'])->middleware(['auth'])->name('like');
 Route::get('/like/delete/{shop_id}', [LikeController::class, 'delete'])->middleware(['auth'])->name('like/delete');
 
@@ -33,7 +42,7 @@ Route::get('/thanks', function () {
     return view('thanks');
 });
 
-/**
+/*
 Route::get('/check', [ShopController::class, 'check']);
 */
 

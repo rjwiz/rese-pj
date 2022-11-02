@@ -3,9 +3,7 @@
 @section('pageCss')
 <link rel="stylesheet" href="css/thanks.css" />
 @endsection
-<div class="wrap">
-  @include('layouts.header')
-</div>
+@include('layouts.header')
 @section('contents')
 <div class="contents">
   <div class="content__inner">

@@ -7,15 +7,18 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
 
-        $response->assertStatus(200);
+    public function test_post()
+    {
+
+        $response = $this->post('/reservation',[
+
+      'user_id' => '1',
+      'shop_id' => '2',
+      'num_of_users' => '4',
+      'start_at' => '2022-10-1-09:00',
+        ]);
+
+        $response->assertRedirect('/done');
     }
 }

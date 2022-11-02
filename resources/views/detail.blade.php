@@ -39,15 +39,15 @@
             <input type="date" id="input-date" name="date">
           </div>
           <div class="shop__reserve-time">
-            <select class="shop__reserve-select" id="input-time" name="time">
+            <select class="shop__reserve-select" id="input-time" name="time" SIZE=5>
               @foreach(config('time') as $time_id => $time)
-              <option value="{{$time_id}}">{{$time}}</option>
+              <option value="{{$time}}">{{$time}}</option>
               @endforeach
             </select>
           </div>
-          <select class="shop__reserve-select" id="input-num" name="num_of_users">
+          <select class="shop__reserve-select" id="input-num" name="num_of_users" SIZE=5>
             @foreach(config('number') as $number_id => $number)
-            <option value="{{$number_id}}">{{$number}}</option>
+            <option value="{{$number}}">{{$number}}</option>
             @endforeach
           </select>
       </div>
