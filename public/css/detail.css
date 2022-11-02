@@ -55,6 +55,7 @@ button {
     background-color: rgb(44, 100, 255);
     position: relative;
     border-radius: 5px 5px 5px 5px;
+    margin-top: -65px;
 }
 
 .shop__reserve-inner {

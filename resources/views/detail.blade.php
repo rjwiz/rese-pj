@@ -3,10 +3,11 @@
 @section('pageCss')
 <link rel="stylesheet" href="/css/detail.css" />
 @endsection
+@include('layouts.header')
+@section('contents')
 <div class="wrap">
   <div>
-    @include('layouts.header')
-    @section('contents')
+
     <div class="detail__ttl">
       <div class="detail__ttl-inner">
         <button onclick="location.href=' /'" class="back__btn">＜</button>
