@@ -15,6 +15,10 @@ class Reservation extends Model
         'start_at',
     ];
 
+    protected $casts = [
+        'start_at' => 'datetime',
+    ];
+
     public function shop()
     {
         return $this->belongsTo('App\Models\Shop');

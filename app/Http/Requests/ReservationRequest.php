@@ -27,9 +27,7 @@ class ReservationRequest extends FormRequest
       'user_id' => ['required'],
       'shop_id' => ['required'],
       'num_of_users' => ['required'],
-      'date' => ['required', 'date'],
-      'time' => ['required', 'date_format:H:i'],
-      'start_at' => ['required', 'integer'],
+      'start_at' => ['required'],
     ];
   }
 
