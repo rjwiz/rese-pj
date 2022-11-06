@@ -80,3 +80,9 @@ a {
 .gnav__menu__item a:hover {
     color: rgb(105, 219, 254);
 }
+
+.errors{
+    color: rgb(255, 0, 0);
+    margin-top: 20px;
+    
+}

@@ -8,16 +8,18 @@ use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Category;
 use App\Models\Like;
+use App\Models\Reservation;
 
 class UserController extends Controller
 {
     public function mypage()
     {
-        $shops = Shop::with('area', 'category')->get();
+        $shops = Shop::with('area', 'category',)->get();
         $user = Auth::user();
         $categories = Category::get();
         $area = Area::get();
         $likes = Like::all()->first();
+        $reservations = Reservation::all()->first();
 
         return view('mypage', [
             'user' => $user,
@@ -25,6 +27,7 @@ class UserController extends Controller
             'categories' => $categories,
             'area' => $area,
             'likes' => $likes,
+            'reservations' => $reservations,
         ]);
     }
 }

@@ -7,7 +7,6 @@
 @section('contents')
 <div class="wrap">
   <div>
-
     <div class="detail__ttl">
       <div class="detail__ttl-inner">
         <button onclick="location.href=' /'" class="back__btn">＜</button>
@@ -33,6 +32,15 @@
         <p>予約</p>
       </div>
       <div>
+        @if ($errors->any())
+        <div class="errors">
+          <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+          </ul>
+        </div>
+        @endif
         <form method="post" action="{{ route('reservation') }}">
           @csrf
           <div class="shop__reserve-date">
@@ -45,11 +53,15 @@
               @endforeach
             </select>
           </div>
-          <select class="shop__reserve-select" id="input-num" name="num_of_users">
-            @foreach(config('number') as $number_id => $number)
-            <option value="{{$number}}">{{$number}}</option>
-            @endforeach
-          </select>
+          <div>
+            <select class="shop__reserve-select" id="input-num" name="num_of_users">
+              @foreach(config('number') as $number_id => $number)
+              <option value="{{$number}}">{{$number}}人</option>
+              @endforeach
+            </select>
+          </div>
+          <input type="hidden" name="user_id" value="{{$user->id}}">
+          <input type="hidden" name="shop_id" value="{{$shopFind->id}}">
       </div>
       <div class="reserve__table">
         <table>
@@ -73,9 +85,16 @@
       </div>
     </div>
     <div>
+      @auth
       <input type="submit" value="予約" class="reserve__btn-block">
+      @endauth
     </div>
     </form>
+    @guest
+    <button class="reserve__btn-block">
+      <a href="/login">予約する</a>
+    </button>
+    @endguest
   </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

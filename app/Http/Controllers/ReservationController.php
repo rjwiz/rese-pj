@@ -6,23 +6,23 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
 use App\Models\Reservation;
 use App\Models\Shop;
-use App\Models\Reserve;
 
 class ReservationController extends Controller
 {
   public function create(ReservationRequest $request)
   {
-    $data = $request->validated();
-    $user_id = Auth::id();
-    $shop_id = $request->id;
-
-    Reservation::create([
+    $user_id = Auth::user()->id;
+    $shop_id = $request ->shop_id;
+    $date = $request->date;
+    $time = ' ' . $request->time;
+    $start_at = $date .= $time;
+    $param = [
       'user_id' => $user_id,
-      'shop_id' => $shop_id,
-      'num_of_users' => (int) $data['num_of_users'],
-      'start_at' => $data['start_at'],
-    ]);
-
+      'shop_id' => $request->shop_id,
+      'start_at' => $start_at,
+      'num_of_users' => $request->num_of_users
+    ];
+    Reservation::create($param);
     return redirect('/done');
   }
 

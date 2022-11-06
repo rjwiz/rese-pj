@@ -26,16 +26,20 @@ class ReservationRequest extends FormRequest
     return [
       'user_id' => ['required'],
       'shop_id' => ['required'],
+      'date' => ['required'],
+      'time' => ['required'],
       'num_of_users' => ['required'],
-      'start_at' => ['required'],
     ];
   }
 
-  protected function prepareForValidation()
+  public function messages()
   {
-    $start_at = ($this->filled(['date', 'time'])) ? $this->date . ' ' . $this->time : '';
-    $this->merge([
-      'start_at' => $start_at
-    ]);
+    return [
+      'user_id.required' => 'ユーザーIDは必ず入力してください。',
+      'shop_id.required' => 'ショップIDは必ず入力してください。',
+      'date.required' => '日付は必ず入力してください。',
+      'time.required' => '時間は必ず入力してください。',
+      'num_of_users.required' => '人数は必ず入力してください。',
+    ];
   }
 }

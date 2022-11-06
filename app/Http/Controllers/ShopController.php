@@ -87,6 +87,7 @@ class ShopController extends Controller
     ]);
   }
 
+  /*
   public function testdetail($id)
   {
     $user = Auth::user();
@@ -100,7 +101,6 @@ class ShopController extends Controller
     ]);
   }
 
-  /** 
   public function check()
   {
     $user = Auth::user();

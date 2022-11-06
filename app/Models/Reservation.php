@@ -7,16 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
+    protected $guarded = [
+        'id'
+    ];
+
     protected $fillable = [
-        'id',
         'user_id',
         'shop_id',
         'num_of_users',
+        'date',
+        'time',
         'start_at',
-    ];
-
-    protected $casts = [
-        'start_at' => 'datetime',
     ];
 
     public function shop()
@@ -29,4 +30,15 @@ class Reservation extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    //予約確認用
+    public function reservation_exist($id, $shop_id)
+    {
+        $exist = Reservation::where('user_id', '=', $id)->where('shop_id', '=', $shop_id)->get();
+
+        if (!$exist->isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

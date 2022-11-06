@@ -11,26 +11,33 @@
   <div class="user__info">
     <div class="reservation">
       <p class="ttl">予約状況</p>
+      @foreach($shops as $shop)
+      @if($reservations->reservation_exist(Auth::user()->id,$shop->id))
       <div class="reserve__table">
         <table>
+          <div>
+            <p>予約{{$reservations->id}}</p>
+          </div>
           <tr>
             <th>Shop</th>
-            <td>shopname</td>
+            <td>{{$reservations->shop->name}}</td>
           </tr>
           <tr>
             <th>Date</th>
-            <td><span id="output-date"></span></td>
+            <td>{{$reservations->start_at}}</td>
           </tr>
           <tr>
             <th>Time</th>
-            <td><span id="output-time"></span></td>
+            <td>{{$reservations->start_at}}</td>
           </tr>
           <tr>
             <th>Number</th>
-            <td><span id="output-num"></span></td>
+            <td>{{$reservations->num_of_users}}</td>
           </tr>
         </table>
       </div>
+      @endif
+      @endforeach
     </div>
     <div class="user__info-inner">
       <div class="user">
