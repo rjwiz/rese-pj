@@ -56,11 +56,13 @@
           <div>
             <select class="shop__reserve-select" id="input-num" name="num_of_users">
               @foreach(config('number') as $number_id => $number)
-              <option value="{{$number}}">{{$number}}人</option>
+              <option value="{{$number}}">{{$number_id}}</option>
               @endforeach
             </select>
           </div>
+          @auth
           <input type="hidden" name="user_id" value="{{$user->id}}">
+          @endauth
           <input type="hidden" name="shop_id" value="{{$shopFind->id}}">
       </div>
       <div class="reserve__table">

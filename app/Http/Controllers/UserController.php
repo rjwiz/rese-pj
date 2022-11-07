@@ -14,18 +14,13 @@ class UserController extends Controller
 {
     public function mypage()
     {
-        $shops = Shop::with('area', 'category',)->get();
-        $user = Auth::user();
-        $categories = Category::get();
-        $area = Area::get();
-        $likes = Like::all()->first();
-        $reservations = Reservation::all()->first();
+        $shops = Shop::all();
+        $user_id = Auth::id();
+        $reservations = Reservation::where('user_id', $user_id)->get();
+        $likes = Like::where('user_id', $user_id)->get();
 
         return view('mypage', [
-            'user' => $user,
             'shops' => $shops,
-            'categories' => $categories,
-            'area' => $area,
             'likes' => $likes,
             'reservations' => $reservations,
         ]);

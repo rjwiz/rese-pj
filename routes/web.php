@@ -23,11 +23,8 @@ Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail
 
 
 Route::POST('/reservation', [ReservationController::class, 'create']) -> middleware(['auth'])->name('reservation');
+Route::POST('reservation/delete', [ReservationController::class, 'delete'])->middleware(['auth'])->name('reservation/delete');
 
-/*
-Route::get('/testdetail/{shop_id}', [ShopController::class, 'testdetail'])->name('testdetail');
-Route::POST('/testreservation', [ReservationController::class, 'show'])->middleware(['auth'])->name('testreservation');
-*/
 
 Route::get('/done', function () {
     return view('done');

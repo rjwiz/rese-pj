@@ -11,63 +11,70 @@
   <div class="user__info">
     <div class="reservation">
       <p class="ttl">予約状況</p>
-      @foreach($shops as $shop)
-      @if($reservations->reservation_exist(Auth::user()->id,$shop->id))
+      @foreach($reservations as $reservation)
       <div class="reserve__table">
         <table>
-          <div>
-            <p>予約{{$reservations->id}}</p>
+          <div class="reserve__inner">
+            <div class="reserve__inner-wrap">
+              <img class="clock" src="{{asset('/images/clock.png')}}">
+              <p class="reserve__number">予約{{$loop->iteration}}</p>
+            </div>
+            <form action="reservation/delete" method="post">
+              @csrf
+              <input type="hidden" name="id" value="{{$reservation->id}}">
+              <input type="submit" class="batsu" value="×">
+            </form>
           </div>
           <tr>
             <th>Shop</th>
-            <td>{{$reservations->shop->name}}</td>
+            <td>{{$reservation->shop->name}}</td>
           </tr>
           <tr>
             <th>Date</th>
-            <td>{{$reservations->start_at}}</td>
+            <td>{{\Carbon\Carbon::parse($reservation->start_at)->format('Y-m-d')}}</td>
           </tr>
           <tr>
             <th>Time</th>
-            <td>{{$reservations->start_at}}</td>
+            <td>{{\Carbon\Carbon::parse($reservation->start_at)->format('H:i')}}</td>
           </tr>
           <tr>
             <th>Number</th>
-            <td>{{$reservations->num_of_users}}</td>
+            <td>{{$reservation->num_of_users}}人</td>
           </tr>
         </table>
       </div>
-      @endif
       @endforeach
     </div>
     <div class="user__info-inner">
       <div class="user">
-        <p>{{$user->name}}さん</p>
+        <p>{{Auth::user()->name}}さん</p>
       </div>
       <div class="like">
         <p class="ttl">お気に入り店舗</p>
         <div class="like__inner">
-          @foreach($shops as $shop)
-          @if($likes->like_exist(Auth::user()->id,$shop->id))
+          @foreach($likes as $like)
           <div class="shop__card">
-            <img src="{{$shop->img_url}}">
+            <img src="{{$like->shop->img_url}}">
             <div class="card__inner">
               <div class="card__ttl">
-                <h2>{{$shop->name}}</h2>
+                <h2>{{$like->shop->name}}</h2>
               </div>
               <div class="shop__info">
-                <p class="shop__area">#{{$shop->area->name}}</p>
-                <p class="shop__category">#{{$shop->category->name}}</p>
+                <p class="shop__area">#{{$like->shop->area->name}}</p>
+                <p class="shop__category">#{{$like->shop->category->name}}</p>
               </div>
               <div class="shop__btn">
-                <a href="{{ route('detail', ['shop_id' => $shop->id]) }}">
+                <a href="{{ route('detail', ['shop_id' => $like->shop->id]) }}">
                   <div class="shop__detail">
                     <p>詳しくみる</p>
                   </div>
                 </a>
+                <div class="like__icon">
+                  <a href="{{ route('like/delete', ['shop_id' => $like->shop->id]) }}"><img src="/images/like.png"></a>
+                </div>
               </div>
             </div>
           </div>
-          @endif
           @endforeach
         </div>
       </div>

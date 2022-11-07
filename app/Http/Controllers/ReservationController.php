@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Http\Requests\ReservationRequest;
 use App\Models\Reservation;
 use App\Models\Shop;
@@ -12,7 +13,7 @@ class ReservationController extends Controller
   public function create(ReservationRequest $request)
   {
     $user_id = Auth::user()->id;
-    $shop_id = $request ->shop_id;
+    $shop_id = $request->shop_id;
     $date = $request->date;
     $time = ' ' . $request->time;
     $start_at = $date .= $time;
@@ -26,15 +27,9 @@ class ReservationController extends Controller
     return redirect('/done');
   }
 
-  /*
-  public function show(ReservationRequest $request)
+  public function delete(Request $request)
   {
-    $data = $request->validated();
-
-    return view('testreservation', [
-      'num_of_users' => $data['num_of_users'],
-      'start_at' => $data['start_at']
-    ]);
+    Reservation::find($request->id)->delete();
+    return redirect('/mypage');
   }
-  */
 }
