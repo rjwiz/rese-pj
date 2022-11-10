@@ -10,32 +10,31 @@
     <form action="/" method="POST">
       @csrf
       <div class="search__area">
-        <select id="area_id" name="area_id" class="area_name" value="area_id">
+        <select name="area_id" class="area_name">
           <option>All area</option>
-          @foreach($area as $area)
-          <option class="name-item" value="{{$area->id}}">
+          @foreach($areas as $area)
+          <option value="{{$area->id}}">
             {{$area->name}}
           </option>
           @endforeach
         </select>
-        <select id="category_id" name="category_id" class="category_name" value="category_id">
+        <select name="category_id" class="category_name">
           <option>All genre</option>
           @foreach($categories as $category)
-          <option class="name-item" value="{{$category->id}}">
+          <option value="{{$category->id}}">
             {{$category->name}}
           </option>
           @endforeach
         </select>
-        <button class="search__button">
+        <button class=" search__button">
           <img class="musimegane" src="{{asset('/images/musimegane.png')}}" alt="">
         </button>
-        <input type="search" name="input" class="search_text_area" placeholder="search...">
+        <input type="text" name="name" class="search_text_area" placeholder="search...">
       </div>
     </form>
   </div>
 </div>
-</div>
-<div class="search-result"></div>
+
 <div class="shop__content" id="search-target">
   @foreach($shops as $shop)
   <div class="shop__card">
@@ -55,7 +54,11 @@
           </div>
         </a>
         @auth
-        @if($like->like_exist(Auth::user()->id,$shop->id))
+        @if(is_null($likes))
+        <div class="like__icon">
+          <a href="{{ route('like', ['shop_id' => $shop->id]) }}"><img src="/images/unlike.png"></a>
+        </div>
+        @elseif($likes->like_exist(Auth::user()->id,$shop->id))
         <div class="like__icon">
           <a href="{{ route('like/delete', ['shop_id' => $shop->id]) }}"><img src="/images/like.png"></a>
         </div>

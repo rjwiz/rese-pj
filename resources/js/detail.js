@@ -14,6 +14,6 @@ window.addEventListener("DOMContentLoaded", function () {
     const inputNum = document.getElementById("input-num");
     inputNum.addEventListener("blur", function (e) {
         const outputNum = document.getElementById("output-num");
-        outputNum.textContent.innerHTML = e.target.value.人;
+        outputNum.textContent.innerHTML = e.target.value+"人";
     });
 });

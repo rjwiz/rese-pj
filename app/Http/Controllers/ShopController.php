@@ -16,63 +16,64 @@ class ShopController extends Controller
     $shops = Shop::with('area', 'category')->get();
 
     $categories = Category::get();
-    $area = Area::get();
-    $like = Like::all()->first();
+    $areas = Area::get();
+    $likes = Like::all()->first();
 
     return view('index', [
       'shops' => $shops,
       'categories' => $categories,
-      'area' => $area,
-      'like' => $like,
+      'areas' => $areas,
+      'likes' => $likes,
     ]);
   }
-  /** 
+
+
   public function search(Request $request)
   {
-    $user = Auth::user();
-    $id = Auth::id();
-    $categories = Category::get();
-    $area = Area::get();
-    $shops = Shop::get();
-    $shops = Shop::with('area', 'Category')->get();
+    $areas = Area::all();
+    $categories = Category::all();
+    $area_id = $request->area_id;
+    $category_id = $request->category_id;
+    $name = $request->input;
+    $shop_id = Like::with('shop_id');
+    $likes = Like::all()->first();
 
-
-    $input = htmlspecialchars($_POST['input'], ENT_QUOTES);
-    $area_id = htmlspecialchars($_POST['area_id'], ENT_QUOTES);
-    $category_id = htmlspecialchars($_POST['category_id'], ENT_QUOTES);
-
-    $query = Shop::query();
-
-    if ($input) {
-      $query->where('name', 'LIKE BINARY', "%{$input}%");
-    } elseif ($input == "" && $area_id && $category_id == "All Category") {
-      $query->where('area_id', $area_id);
-    } elseif ($input == "" && $area_id == "All area" && $category_id) {
-      $query->where('category_id', $category_id);
-    } elseif ($input == "" && $area_id && $category_id) {
-      $query->where('area_id', $area_id)->where('category_id', $category_id);
+    if (!empty($area_id)) {
+      $search = Shop::where('area_id', $area_id)->get();
     }
-
-    $shops = $query->get();
-
-    if ($input == "" && $area_id == "All area" && $category_id == "All genru") {
-      $shops = shop::get();
+    if (!empty($category_id)) {
+      $search = Shop::where('category_id', $category_id)->get();
+    }
+    if (!empty($name)) {
+      $search = Shop::where('name', 'like', "%{$name}%")->get();
+    }
+    if (!empty($area_id) && ($category_id)) {
+      $search = Shop::where('area_id', $area_id)->where('category_id', $category_id)->get();
+    }
+    if (!empty($area_id) && ($name)) {
+      $search = Shop::where('area_id', $area_id)->where('name', 'like', "%{$name}%")->get();
+    }
+    if (!empty($category_id) && ($name)) {
+      $search = Shop::where('category_id', $category_id)->where('name', 'like', "%{$name}%")->get();
+    }
+    if (!empty($area_id) && ($category_id) && ($name)) {
+      $search = Shop::where('area_id', $area_id)->where('category_id', $category_id)->where('name', 'like', "%{$name}%")->get();
+    }
+    if ((empty($area_id)) && (empty($category_id)) && (empty($name))) {
+      $search = Shop::all();
     }
 
     $param = [
-      'input' => $request->input,
-      'area' => $area,
+      'areas' => $areas,
       'categories' => $categories,
-      'shops' => $shops,
-      'user' => $user,
-      'id' => $id,
-
+      'area_id' => $area_id,
+      'category_id' => $category_id,
+      'shops' => $search,
+      'shop_id' => $shop_id,
+      'likes' => $likes
     ];
-    return view('index', $param, [
-      'shops' => $shops,
-    ]);
+    return view('/index', $param);
   }
-   */
 
   public function detail($id)
   {
