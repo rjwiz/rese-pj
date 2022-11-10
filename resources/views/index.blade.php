@@ -26,7 +26,7 @@
           </option>
           @endforeach
         </select>
-        <button class=" search__button">
+        <button class="search__button">
           <img class="musimegane" src="{{asset('/images/musimegane.png')}}" alt="">
         </button>
         <input type="text" name="name" class="search_text_area" placeholder="search...">

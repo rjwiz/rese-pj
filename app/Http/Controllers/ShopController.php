@@ -45,19 +45,19 @@ class ShopController extends Controller
       $search = Shop::where('category_id', $category_id)->get();
     }
     if (!empty($name)) {
-      $search = Shop::where('name', 'like', "%{$name}%")->get();
+      $search = Shop::where('name', 'like', "%$name%")->get();
     }
     if (!empty($area_id) && ($category_id)) {
       $search = Shop::where('area_id', $area_id)->where('category_id', $category_id)->get();
     }
     if (!empty($area_id) && ($name)) {
-      $search = Shop::where('area_id', $area_id)->where('name', 'like', "%{$name}%")->get();
+      $search = Shop::where('area_id', $area_id)->where('name', "%$name%")->get();
     }
     if (!empty($category_id) && ($name)) {
-      $search = Shop::where('category_id', $category_id)->where('name', 'like', "%{$name}%")->get();
+      $search = Shop::where('category_id', $category_id)->where('name', "%$name%")->get();
     }
     if (!empty($area_id) && ($category_id) && ($name)) {
-      $search = Shop::where('area_id', $area_id)->where('category_id', $category_id)->where('name', 'like', "%{$name}%")->get();
+      $search = Shop::where('area_id', $area_id)->where('category_id', $category_id)->where('name', "%$name%")->get();
     }
     if ((empty($area_id)) && (empty($category_id)) && (empty($name))) {
       $search = Shop::all();
