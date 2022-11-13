@@ -1,0 +1,44 @@
+.wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrap__inner {
+    margin: 20 50 0 50px;
+}
+
+.reservation {
+    width: 35%;
+    margin-top: 60px;
+}
+
+.reserve__table {
+    padding: 20px 0px 20px 15px;
+    margin-bottom: 20px;
+    background-color: rgb(44, 100, 255);
+    border-radius: 5px 5px 5px 5px;
+}
+
+.reserve__table table {
+    text-align: left;
+    border-spacing: 10px 0px;
+    border-collapse: separate;
+}
+
+th {
+    margin-right: 10px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+td {
+    color: #fff;
+    font-size: 15px;
+    font-weight: normal;
+}
+
+tr td:nth-child(2),
+td:nth-child(3) {
+    padding-top: 20px;
+}

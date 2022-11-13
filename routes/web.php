@@ -18,17 +18,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [ShopController::class, 'index']);
-Route::POST('/', [ShopController::class, 'search']);
+Route::POST('search', [ShopController::class, 'search']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
-
 
 Route::POST('/reservation', [ReservationController::class, 'create']) -> middleware(['auth'])->name('reservation');
 Route::POST('reservation/delete', [ReservationController::class, 'delete'])->middleware(['auth'])->name('reservation/delete');
-
-
 Route::get('/done', function () {
     return view('done');
 });
+
+Route::get('edit/{reservation_id}', [ReservationController::class, 'show'])->middleware(['auth'])->name('edit');
 
 Route::get('/like/{shop_id}', [LikeController::class, 'create'])->middleware(['auth'])->name('like');
 Route::get('/like/delete/{shop_id}', [LikeController::class, 'delete'])->middleware(['auth'])->name('like/delete');

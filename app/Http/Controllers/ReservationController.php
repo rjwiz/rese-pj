@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ReservationRequest;
 use App\Models\Reservation;
 use App\Models\Shop;
+use App\Models\Area;
+use App\Models\Category;
+use App\Models\Like;
 
 class ReservationController extends Controller
 {
@@ -31,5 +34,15 @@ class ReservationController extends Controller
   {
     Reservation::find($request->id)->delete();
     return redirect('/mypage');
+  }
+
+
+  public function show($id)
+  {
+
+    $reservation_id = Reservation::Find($id);
+    $reservation_shop = $reservation_id->shop_id;
+
+    return view('edit', []);
   }
 }

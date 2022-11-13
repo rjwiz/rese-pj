@@ -50,6 +50,17 @@
     cursor: pointer;
 }
 
+.shop__detail {
+    width: 100%;
+    padding: 10;
+    margin-top: 20;
+    margin-bottom: 30;
+    background-color: #0d33ff;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+}
+
 .reserve__number {
     color: #fff;
     font-weight: bold;

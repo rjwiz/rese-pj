@@ -42,6 +42,13 @@
             <td>{{$reservation->num_of_users}}人</td>
           </tr>
         </table>
+        <div class="shop__btn">
+          <a href="{{ route('edit', ['reservation_id' => $reservation->id]) }}">
+            <div class="shop__detail">
+              <p>詳しくみる</p>
+            </div>
+          </a>
+        </div>
       </div>
       @endforeach
     </div>

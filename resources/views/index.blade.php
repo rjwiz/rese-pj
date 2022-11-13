@@ -7,26 +7,24 @@
   @include('layouts.header')
   @section('contents')
   <div class="search_area">
-    <form action="/" method="POST">
+    <form action="search" method="POST">
       @csrf
       <div class="search__area">
-        <select name="area_id" class="area_name">
-          <option>All area</option>
+        <select name="area_id" class="area_name" value="{{$area_id}}">
+          <option value="">All area</option>
           @foreach($areas as $area)
           <option value="{{$area->id}}">
             {{$area->name}}
           </option>
           @endforeach
         </select>
-        <select name="category_id" class="category_name">
-          <option>All genre</option>
-          @foreach($categories as $category)
-          <option value="{{$category->id}}">
-            {{$category->name}}
-          </option>
+        <select name="category_id" class="category_name" value="{{$category_id}}">
+          <option value="">All genre</option>
+          @foreach ($categories as $category)
+          <option value="{{$category->id}}" @if(old('category_id')==$category->id ) selected @endif>{{ $category->name }}</option>
           @endforeach
         </select>
-        <button class="search__button">
+        <button class="search__button" type="submit">
           <img class="musimegane" src="{{asset('/images/musimegane.png')}}" alt="">
         </button>
         <input type="text" name="name" class="search_text_area" placeholder="search...">
@@ -34,7 +32,9 @@
     </form>
   </div>
 </div>
-
+@if($shops->isEmpty())
+<p>検索結果は0件です</p>
+@else
 <div class="shop__content" id="search-target">
   @foreach($shops as $shop)
   <div class="shop__card">
@@ -77,6 +77,7 @@
     </div>
   </div>
   @endforeach
+  @endif
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
