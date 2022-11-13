@@ -87,26 +87,4 @@ class ShopController extends Controller
       'shopFind' => $shopFind
     ]);
   }
-
-  /*
-  public function testdetail($id)
-  {
-    $user = Auth::user();
-    $shops = Shop::with('area', 'category')->get();
-    $shopFind = Shop::find($id);
-
-    return view('testdetail', [
-      'user' => $user,
-      'shops' => $shops,
-      'shopFind' => $shopFind
-    ]);
-  }
-
-  public function check()
-  {
-    $user = Auth::user();
-    $param = ['user' => $user];
-    return view('check', $param,);
-  }
-   */
 }
