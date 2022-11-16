@@ -39,10 +39,29 @@ class ReservationController extends Controller
 
   public function show($id)
   {
+    $user = Auth::user();
+    $reservation = Reservation::find($id)->with('shop', 'shop.area', 'shop.category')->first();
 
-    $reservation_id = Reservation::Find($id);
-    $reservation_shop = $reservation_id->shop_id;
+    return view('edit', [
+      'user' => $user,
+      'reservation' => $reservation
+    ]);
+  }
 
-    return view('edit', []);
+  public function update(ReservationRequest $request)
+  {
+    $date = $request->date;
+    $time = ' ' . $request->time;
+    $start_at = $date .= $time;
+    $reservation = [
+      'id' => $request->reservation_id,
+      'user_id' => $request->user_id,
+      'shop_id' => $request->shop_id,
+      'start_at' => $start_at,
+      'num_of_users' => $request->num_of_users
+    ];
+    unset($reservation['_token']);
+    Reservation::where('id', $request->reservation_id)->update($reservation);
+    return view('/editdone');
   }
 }

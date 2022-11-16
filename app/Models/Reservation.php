@@ -28,4 +28,14 @@ class Reservation extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    public function area()
+    {
+        return $this->belongsTo('App\Models\Area');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Area');
+    }
+
 }

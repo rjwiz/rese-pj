@@ -45,7 +45,7 @@
         <div class="shop__btn">
           <a href="{{ route('edit', ['reservation_id' => $reservation->id]) }}">
             <div class="shop__detail">
-              <p>詳しくみる</p>
+              <p>予約情報を変更する</p>
             </div>
           </a>
         </div>

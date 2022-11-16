@@ -5,18 +5,51 @@
 
 .wrap__inner {
     margin: 20 50 0 50px;
+    display: flex;
+}
+
+.detail__all {
+    width: 95%;
+}
+
+.shop__detail {
+    width: 95%;
+}
+
+.shop__detail img {
+    width: 100%;
+}
+
+.shop__info {
+    display: flex;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.shop__area {
+    margin-right: 10px;
+}
+
+.shop__description {
+    margin-top: 10px;
+    line-height: 1.5;
 }
 
 .reservation {
-    width: 35%;
-    margin-top: 60px;
+    width: 95%;
+    margin-top: 30px;
+}
+
+.reserve__ttl {
+    color: #fff;
+    font-weight: bold;
 }
 
 .reserve__table {
     padding: 20px 0px 20px 15px;
-    margin-bottom: 20px;
-    background-color: rgb(44, 100, 255);
+    background-color: rgb(123, 158, 255);
     border-radius: 5px 5px 5px 5px;
+    margin-top: 25px;
 }
 
 .reserve__table table {
@@ -41,4 +74,51 @@ td {
 tr td:nth-child(2),
 td:nth-child(3) {
     padding-top: 20px;
+}
+
+.shop__reserve {
+    width: 100%;
+    background-color: rgb(44, 100, 255);
+    border-radius: 5px 5px 5px 5px;
+    position: relative;
+}
+
+.shop__reserve-inner {
+    padding: 20px;
+}
+
+.shop__reserve-date {
+    margin: 20 0 10 0;
+}
+
+.shop__reserve-date input {
+    width: 65%;
+    padding: 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.shop__reserve-time select {
+    width: 90%;
+    padding: 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.shop__reserve-select {
+    width: 90%;
+    margin: 10 0 10 0;
+    padding: 5px;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.reserve__btn-block {
+    width: 100%;
+    background-color: rgb(1, 69, 255);
+    border-radius: 0 0 5px 5px;
+    position: absolute;
+    bottom: 0px;
+    padding: 20px 0;
+    text-align: center;
+    color: #fff;
+    border: none;
+    cursor: pointer;
 }

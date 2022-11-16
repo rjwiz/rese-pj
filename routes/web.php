@@ -28,6 +28,7 @@ Route::get('/done', function () {
 });
 
 Route::get('edit/{reservation_id}', [ReservationController::class, 'show'])->middleware(['auth'])->name('edit');
+Route::POST('update', [ReservationController::class, 'update'])->middleware(['auth'])->name('update');
 
 Route::get('/like/{shop_id}', [LikeController::class, 'create'])->middleware(['auth'])->name('like');
 Route::get('/like/delete/{shop_id}', [LikeController::class, 'delete'])->middleware(['auth'])->name('like/delete');
