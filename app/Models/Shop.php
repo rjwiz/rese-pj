@@ -34,4 +34,9 @@ class Shop extends Model
   {
     return $this->hasMany('App\Models\Like');
   }
+
+  public function scores()
+  {
+    return $this->hasMany('App\Models\Score');
+  }
 }

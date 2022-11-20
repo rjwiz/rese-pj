@@ -40,7 +40,7 @@ class ReservationController extends Controller
   public function show($id)
   {
     $user = Auth::user();
-    $reservation = Reservation::find($id)->with('shop', 'shop.area', 'shop.category')->first();
+    $reservation = Reservation::find($id);
 
     return view('edit', [
       'user' => $user,

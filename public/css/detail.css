@@ -8,6 +8,10 @@
     width: 48%;
 }
 
+.wrap__score {
+    margin: 50px 5%;
+}
+
 .detail__ttl-inner {
     display: flex;
     align-items: center;
@@ -126,5 +130,49 @@ td:nth-child(3) {
     text-align: center;
     color: #fff;
     border: none;
+    cursor: pointer;
+}
+
+.wrap__score h2 {
+    font-size: 20px;
+}
+
+.users__score {
+    margin: 30 0;
+}
+
+.score__form {
+    margin-top: 20;
+}
+
+.score__form form {
+    margin-top: 10;
+}
+
+.score__form-comment {
+    margin-bottom: 10;
+    width: 100%;
+}
+
+.users__score-inner {
+    border: 1px solid #d3d3d3;
+    border-radius: 5px 5px;
+    padding: 10 5;
+    margin-top: 5;
+}
+
+.users__score-comment {
+    margin: 10 0;
+}
+
+.wrap__score-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.score__btn-block {
+    border-radius: 5px 5px;
+    border: 1px solid #d3d3d3;
+    text-align: center;
     cursor: pointer;
 }

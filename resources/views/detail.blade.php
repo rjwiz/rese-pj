@@ -99,6 +99,40 @@
     @endguest
   </div>
 </div>
+<div class="wrap__score">
+  <h2>口コミ</h2>
+  <div class="score__form">
+    <p>{{Auth::user()->name}}さんも口コミを投稿しよう！</p>
+    <form method="POST" action="{{ route('score', ['shop_id' => $shopFind->id]) }}">
+      @csrf
+      <div class="score__form-comment">
+        <textarea type="text" name="comment" style="width:100%; height:80px;" placeholder="コメントを記載してください…"></textarea>
+      </div>
+      <div class="wrap__score-inner">
+        <div>
+          <label>評価</label>
+          <select type="text" name="point">
+            @foreach(config('score') as $key => $score)
+            <option value="{{ $key }}">{{ $score }}</option>
+            @endforeach
+          </select>
+        </div>
+        @auth
+        <input type="submit" value="投稿する" class="score__btn-block">
+        @endauth
+      </div>
+    </form>
+  </div>
+  <div class="users__score">
+    <p>{{Auth::user()->name}}さん</p>
+    <div class="users__score-inner">
+      <div class="users__score-comment">
+        <p>kome</p>
+      </div>
+      <p class="users__score-point">star</p>
+    </div>
+  </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 @section('pageJs')

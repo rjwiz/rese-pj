@@ -4,6 +4,7 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ScoreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,7 @@ Route::POST('update', [ReservationController::class, 'update'])->middleware(['au
 Route::get('/like/{shop_id}', [LikeController::class, 'create'])->middleware(['auth'])->name('like');
 Route::get('/like/delete/{shop_id}', [LikeController::class, 'delete'])->middleware(['auth'])->name('like/delete');
 
+Route::POST('/score/{shop_id}', [ScoreController::class, 'score'])->middleware(['auth'])->name('score');
 
 Route::get('/mypage', [UserController::class, 'mypage'])->name('mypage');
 Route::get('/thanks', function () {
