@@ -83,7 +83,6 @@ class ShopController extends Controller
     $shopFind = Shop::find($shop_id);
 
     $scores = Score::find($shop_id);
-    dd($scores);
 
     return view('detail', [
       'user' => $user,
