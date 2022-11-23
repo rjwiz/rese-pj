@@ -8,12 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class ScoreController extends Controller
 {
-    public function create($shop_id)
+    public function create(Request $request)
     {
-        $like = new Score();
-        $like->shop_id = $shop_id;
-        $like->user_id = Auth::user()->id;
-        $like->save();
+        $user_id = Auth::user()->id;
+        $score = [
+            'user_id' => $request->user_id,
+            'shop_id' => $request->shop_id,
+            'point' => $request->point,
+            'comment' => $request->comment
+        ];
+        Score::create($score);
         return back();
     }
 

@@ -20,13 +20,13 @@ class ReservationController extends Controller
     $date = $request->date;
     $time = ' ' . $request->time;
     $start_at = $date .= $time;
-    $param = [
+    $reservation = [
       'user_id' => $user_id,
       'shop_id' => $request->shop_id,
       'start_at' => $start_at,
       'num_of_users' => $request->num_of_users
     ];
-    Reservation::create($param);
+    Reservation::create($reservation);
     return redirect('/done');
   }
 

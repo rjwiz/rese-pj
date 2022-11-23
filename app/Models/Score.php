@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Score extends Model
 {
+    protected $fillable = [
+        'id',
+        'user_id',
+        'shop_id',
+        'point',
+        'comment',
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\Models\User');

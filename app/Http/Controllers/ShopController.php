@@ -8,6 +8,7 @@ use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Category;
 use App\Models\Like;
+use App\Models\Score;
 
 class ShopController extends Controller
 {
@@ -49,25 +50,12 @@ class ShopController extends Controller
       $query = Shop::where('area_id', $area_id);
     }
 
-
     if (!empty($category_id)) {
       $query = Shop::where('category_id', $category_id);
     }
 
     if (!empty($name)) {
       $query = Shop::where('name', 'like', '%' . self::escapeLike($name) . '%');
-    }
-
-    if ((!empty($area_id)) && (!empty($category_id))) {
-      $query = Shop::where('area_id', $area_id)->where('category_id', $category_id);
-    }
-
-    if (((!empty($area_id)) && (!empty($category_id))) && (!empty($category_id))) {
-      $query = Shop::where('area_id', $area_id)->where('category_id', $category_id)->where('name', 'like', '%' . self::escapeLike($name) . '%');
-    }
-
-    if ((empty($area_id)) && (empty($category_id)) && (empty($name))) {
-      $query = Shop::with('area', 'category')->get();
     }
 
     $shopsSearch = $query->get();
@@ -88,16 +76,20 @@ class ShopController extends Controller
   }
 
 
-  public function detail($id)
+  public function detail($shop_id)
   {
     $user = Auth::user();
     $shops = Shop::with('area', 'category')->get();
-    $shopFind = Shop::find($id);
+    $shopFind = Shop::find($shop_id);
+
+    $scores = Score::find($shop_id);
+    dd($scores);
 
     return view('detail', [
       'user' => $user,
       'shops' => $shops,
-      'shopFind' => $shopFind
+      'shopFind' => $shopFind,
+      'scores' => $scores
     ]);
   }
 }
