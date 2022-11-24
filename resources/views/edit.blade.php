@@ -46,7 +46,7 @@
   <div class="shop__reserve">
     <div class="shop__reserve-inner">
       <div class="reserve__ttl">
-        <p>予約</p>
+        <p>予約情報の変更</p>
       </div>
       <div>
         @if ($errors->any())
@@ -104,7 +104,7 @@
         </table>
       </div>
     </div>
-    <input type="submit" value="予約" class="reserve__btn-block">
+    <input type="submit" value="予約情報を変更" class="reserve__btn-block">
     </form>
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

@@ -9,6 +9,7 @@ use App\Models\Area;
 use App\Models\Category;
 use App\Models\Like;
 use App\Models\Score;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 class ShopController extends Controller
 {
@@ -29,7 +30,7 @@ class ShopController extends Controller
       'areas' => $areas,
       'likes' => $likes,
       'area_id' => $area_id,
-      'category_id' => $category_id
+      'category_id' => $category_id,
     ]);
   }
 
@@ -82,13 +83,15 @@ class ShopController extends Controller
     $shops = Shop::with('area', 'category')->get();
     $shopFind = Shop::find($shop_id);
 
-    $scores = Score::find($shop_id);
+    $scores = Score::where('shop_id', $shop_id)->get();
+    $scoreAvg = Score::where('shop_id', $shop_id)->avg('point');
 
     return view('detail', [
       'user' => $user,
       'shops' => $shops,
       'shopFind' => $shopFind,
-      'scores' => $scores
+      'scores' => $scores,
+      'scoreAvg' => $scoreAvg
     ]);
   }
 }

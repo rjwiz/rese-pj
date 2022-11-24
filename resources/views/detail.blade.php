@@ -11,6 +11,22 @@
       <div class="detail__ttl-inner">
         <button onclick="location.href=' /'" class="back__btn">＜</button>
         <p class="shop__name">{{$shopFind->name}}</p>
+        <div class="shop__point">
+          <p class="shop__point-ttl">評価ポイント</p>
+          @if ($scoreAvg == 0)
+          <img src="/images/graystar.png">
+          @elseif ($scoreAvg == 1)
+          <p>{{ '⭐️' }}</p>
+          @elseif ($scoreAvg == 2)
+          <p>{{ '⭐️⭐️' }}</p>
+          @elseif ($scoreAvg == 3)
+          <p>{{ '⭐️⭐️⭐️' }}</p>
+          @elseif ($scoreAvg == 4)
+          <p>{{ '⭐️⭐️⭐️⭐️' }}</p>
+          @elseif ($scoreAvg == 5)
+          <p>{{ '⭐️⭐️⭐️⭐️⭐️' }}</p>
+          @endif
+        </div>
       </div>
     </div>
     <div class="detail__all">
@@ -119,6 +135,7 @@
           </select>
         </div>
         <input type="submit" value="投稿する" class="score__btn-block">
+        <input type="hidden" name="user_id" value="{{$user->id}}">
       </div>
     </form>
   </div>
@@ -127,10 +144,15 @@
   <div class="score__login">
     <p>ログイン・会員登録して口コミを投稿しよう！</p>
     <div>
-      <button onclick="location.href=' /'" class="login__btn">ログイン</button>
+      <button onclick="location.href=' /login'" class="login__btn">ログイン</button>
     </div>
   </div>
   @endguest
+  @if($scores->isEmpty())
+  <div class="users__noscore">
+    <p>このお店には口コミがありません。</p>
+  </div>
+  @elseif(isset($scores))
   @foreach($scores as $score)
   <div class="users__score">
     <p>{{$score->user->name}}さん</p>
@@ -138,10 +160,21 @@
       <div class="users__score-comment">
         <p>{{$score->comment}}</p>
       </div>
-      <p class="users__score-point">{{$score->point}}</p>
+      @if ($score->point == 1)
+      <p>{{ '⭐️' }}</p>
+      @elseif ($score->point == 2)
+      <p>{{ '⭐️⭐️' }}</p>
+      @elseif ($score->point == 3)
+      <p>{{ '⭐️⭐️⭐️' }}</p>
+      @elseif ($score->point == 4)
+      <p>{{ '⭐️⭐️⭐️⭐️' }}</p>
+      @elseif ($score->point == 5)
+      <p>{{ '⭐️⭐️⭐️⭐️⭐️' }}</p>
+      @endif
     </div>
   </div>
   @endforeach
+  @endif
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
