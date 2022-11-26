@@ -10,7 +10,7 @@
     <form action="search" method="POST">
       @csrf
       <div class="search__area">
-        <select name="area_id" class="area_name" value="{{$area_id}}">
+        <select name="area_id" class="area_name" value="{{$area_id}}" id="area__select">
           <option value="">All area</option>
           @foreach($areas as $area)
           <option value="{{$area->id}}">
@@ -18,13 +18,13 @@
           </option>
           @endforeach
         </select>
-        <select name="category_id" class="category_name" value="{{$category_id}}">
+        <select name="category_id" class="category_name" value="{{$category_id}}" id="category__select">
           <option value="">All genre</option>
           @foreach ($categories as $category)
           <option value="{{$category->id}}" @if(old('category_id')==$category->id ) selected @endif>{{ $category->name }}</option>
           @endforeach
         </select>
-        <button class="search__button" type="submit">
+        <button class="search__button" type="submit" id="submit__btn">
           <img class="musimegane" src="{{asset('/images/musimegane.png')}}" alt="">
         </button>
         <input type="text" name="name" class="search_text_area" placeholder="search...">
@@ -81,7 +81,8 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 @section('pageJs')
-{{--<script src="{{ mix('js/search.js') }}"></script>--}}
+<script src="{{ mix('js/search.js') }}"></script>
 @endsection
 @endsection
