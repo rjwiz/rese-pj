@@ -64,6 +64,7 @@
           </div>
           <div class="shop__reserve-time">
             <select class="shop__reserve-select" id="input-time" name="time">
+              <option value="">予約時間を選択</option>
               @foreach(config('time') as $time_id => $time)
               <option value="{{$time}}">{{$time}}</option>
               @endforeach
@@ -71,6 +72,7 @@
           </div>
           <div>
             <select class="shop__reserve-select" id="input-num" name="num_of_users">
+              <option value="">人数を選択</option>
               @foreach(config('number') as $number_id => $number)
               <option value="{{$number}}">{{$number_id}}</option>
               @endforeach

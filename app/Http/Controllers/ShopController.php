@@ -48,15 +48,15 @@ class ShopController extends Controller
     $query = Shop::query();
 
     if (!empty($area_id)) {
-      $query = Shop::where('area_id', $area_id);
+      $query->where('area_id', $area_id);
     }
 
     if (!empty($category_id)) {
-      $query = Shop::where('category_id', $category_id);
+      $query->where('category_id', $category_id);
     }
 
     if (!empty($name)) {
-      $query = Shop::where('name', 'like', '%' . self::escapeLike($name) . '%');
+      $query->where('name', 'like', '%' . self::escapeLike($name) . '%');
     }
 
     $shopsSearch = $query->get();
@@ -68,6 +68,7 @@ class ShopController extends Controller
       'shops' => $shopsSearch,
       'area_id' => $area_id,
       'category_id' => $category_id,
+      "name" => $name
     ]);
   }
 

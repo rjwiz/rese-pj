@@ -21,13 +21,13 @@
         <select name="category_id" class="category_name" value="{{$category_id}}" id="category__select">
           <option value="">All genre</option>
           @foreach ($categories as $category)
-          <option value="{{$category->id}}" @if(old('category_id')==$category->id ) selected @endif>{{ $category->name }}</option>
+          <option value="{{$category->id}}">{{ $category->name }}</option>
           @endforeach
         </select>
         <button class="search__button" type="submit" id="submit__btn">
           <img class="musimegane" src="{{asset('/images/musimegane.png')}}" alt="">
         </button>
-        <input type="text" name="name" class="search_text_area" placeholder="search...">
+        <input type="text" name="name" class="search_text_area" value=" @if(isset( $name )) $name @endif" placeholder="search...">
       </div>
     </form>
   </div>
