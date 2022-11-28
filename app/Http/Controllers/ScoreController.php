@@ -12,7 +12,7 @@ class ScoreController extends Controller
     {
         $user_id = Auth::user()->id;
         $score = [
-            'user_id' => $request->user_id,
+            'user_id' => $user_id,
             'shop_id' => $request->shop_id,
             'point' => $request->point,
             'comment' => $request->comment

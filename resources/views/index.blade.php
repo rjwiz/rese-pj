@@ -10,24 +10,22 @@
     <form action="search" method="POST">
       @csrf
       <div class="search__area">
-        <select name="area_id" class="area_name" value="{{$area_id}}" id="area__select">
+        <select name="area_id" class="area_name" value="{{$area_id}}">
           <option value="">All area</option>
           @foreach($areas as $area)
-          <option value="{{$area->id}}">
-            {{$area->name}}
-          </option>
+          <option value="{{ $area->id }}" @if (isset($area_id) && ($areaInput->id === $area->id)) selected @endif>{{ $area->name }}</option>
           @endforeach
         </select>
-        <select name="category_id" class="category_name" value="{{$category_id}}" id="category__select">
+        <select name="category_id" class="category_name" value="{{$category_id}}">
           <option value="">All genre</option>
           @foreach ($categories as $category)
-          <option value="{{$category->id}}">{{ $category->name }}</option>
+          <option value="{{ $category->id }}" @if (isset($category_id) && ($categoryInput->id === $category->id)) selected @endif>{{ $category->name }}</option>
           @endforeach
         </select>
         <button class="search__button" type="submit" id="submit__btn">
           <img class="musimegane" src="{{asset('/images/musimegane.png')}}" alt="">
         </button>
-        <input type="text" name="name" class="search_text_area" value=" @if(isset( $name )) $name @endif" placeholder="search...">
+        <input type="text" name="name" class="search_text_area" value="@if (isset($name)) {{ $name }} @endif" placeholder="search...">
       </div>
     </form>
   </div>

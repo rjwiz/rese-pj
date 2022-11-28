@@ -44,6 +44,8 @@ class ShopController extends Controller
     $area_id = $request->input('area_id');
     $category_id = $request->input('category_id');
     $name = $request->input('name');
+    $areaInput = Area::find($area_id);
+    $categoryInput = Category::find($category_id);
 
     $query = Shop::query();
 
@@ -63,7 +65,9 @@ class ShopController extends Controller
 
     return view('index', [
       'categories' => $categories,
+      'categoryInput' => $categoryInput,
       'areas' => $areas,
+      'areaInput' => $areaInput,
       'likes' => $likes,
       'shops' => $shopsSearch,
       'area_id' => $area_id,
