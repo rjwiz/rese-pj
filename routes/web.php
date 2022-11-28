@@ -22,7 +22,7 @@ Route::get('/', [ShopController::class, 'index']);
 Route::POST('search', [ShopController::class, 'search']);
 Route::get('/detail/{shop_id}', [ShopController::class, 'detail'])->name('detail');
 
-Route::POST('/reservation', [ReservationController::class, 'create']) -> middleware(['auth'])->name('reservation');
+Route::POST('/reservation', [ReservationController::class, 'create'])->middleware(['auth'])->name('reservation');
 Route::POST('reservation/delete', [ReservationController::class, 'delete'])->middleware(['auth'])->name('reservation/delete');
 Route::get('/done', function () {
     return view('done');
@@ -45,4 +45,4 @@ Route::get('/thanks', function () {
 Route::get('/check', [ShopController::class, 'check']);
 */
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

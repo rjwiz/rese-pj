@@ -6,10 +6,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReservationRequest;
 use App\Models\Reservation;
-use App\Models\Shop;
-use App\Models\Area;
-use App\Models\Category;
-use App\Models\Like;
 
 class ReservationController extends Controller
 {
@@ -27,6 +23,8 @@ class ReservationController extends Controller
       'num_of_users' => $request->num_of_users
     ];
     Reservation::create($reservation);
+
+
     return redirect('/done');
   }
 

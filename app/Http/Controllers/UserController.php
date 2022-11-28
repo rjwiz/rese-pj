@@ -12,17 +12,17 @@ use App\Models\Reservation;
 
 class UserController extends Controller
 {
-    public function mypage()
-    {
-        $shops = Shop::all();
-        $user_id = Auth::id();
-        $reservations = Reservation::where('user_id', $user_id)->get();
-        $likes = Like::where('user_id', $user_id)->get();
+  public function mypage()
+  {
+    $shops = Shop::all();
+    $user_id = Auth::id();
+    $reservations = Reservation::where('user_id', $user_id)->get();
+    $likes = Like::where('user_id', $user_id)->get();
 
-        return view('mypage', [
-            'shops' => $shops,
-            'likes' => $likes,
-            'reservations' => $reservations,
-        ]);
-    }
+    return view('mypage', [
+      'shops' => $shops,
+      'likes' => $likes,
+      'reservations' => $reservations,
+    ]);
+  }
 }
